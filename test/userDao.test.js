@@ -1,0 +1,90 @@
+// usersDao.test.js
+const mongoose = require("mongoose");
+const config = require("../src/config/config.js");
+const Assert = require("assert");
+const UsersMongoDao = require("../src/dao/usersMongoDao.js");
+
+mongoose.connect(config.MONGO_URL, { dbName: config.DB_NAME });
+
+const assert = Assert.strict;
+
+describe("Prueba al Dao de Usuarios del proyecto Ecommerce", function () {
+  this.timeout(5000);
+
+  before(async function () {
+    this.usersDao = UsersMongoDao; 
+  });
+
+  /*
+  beforeEach(async function(){
+    await mongoose.connection
+      .collection("users")
+      .deleteMany({ email: "juarez@test.com" });
+  })
+  */
+  after(async function () {
+    await mongoose.connection
+      .collection("users")
+      .deleteMany({ email: "messi@test.com" });
+  });
+
+  it("El dao debe devolver un array de usuarios al ejecutar el método getUsers", async function () {
+    let resultado = await this.usersDao.getUsers();
+    assert.strictEqual(Array.isArray(resultado), true);
+  });
+
+  it("El dao graba un usuario con su método createUser", async function (){
+
+    // first_name, last_name, email, age, password, role
+        let usuarioPrueba = {
+          first_name:"Lionel",
+          last_name: "Messi" ,
+          email: "messi@test.com" ,
+          age: "25" ,
+          password: "123" ,
+          role: "user" ,   
+        };
+        let resultado = await this.usersDao.createUser(usuarioPrueba)
+
+        assert.ok(resultado._id)
+        assert.ok(resultado.first_name);
+        assert.equal(resultado.first_name, "Lionel")
+        assert.equal(resultado.last_name, "Messi");
+        
+  });
+
+});
+
+// npx mocha --exit
+
+/*
+
+const moongose = require("mongoose");
+const config =  require("../src/config/config.js")
+const Assert =require("assert");
+const UsersMongoDao = require("../src/dao/usersMongoDao.js");
+
+
+
+moongose.connect(config.MONGO_URL, { dbName: config.DB_NAME });
+
+const assert = Assert.strict
+
+describe("Prueba al Dao de Usuarios del proyecto Ecommerce", function(){
+    
+    this.timeout(5000)
+
+   
+    before(async function(){
+      this.usersDao = new UsersMongoDao();
+      console.log(this.usersDao.getUsers())
+    });
+
+
+    it("El dao debe devolver un array de usuarios al ejecutar el método getUsers", async function(){
+        let resultado = await this.usersDao.getUsers()
+        assert.strictEqual(Array.isArray(resultado), true)
+    })   
+})
+
+*/
