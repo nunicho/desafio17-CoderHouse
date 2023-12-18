@@ -70,6 +70,16 @@ describe("Prueba al Dao de Productos del proyecto Ecommerce", function () {
     assert.equal(resultado.code, "TEST-1");
     productoId = resultado._id;
   });
+it("El dao busca un producto por código con su método buscarCode", async function () {
+  const codeABuscar = "TEST-1";
+  const resultado = await this.productosDao.existeProducto(codeABuscar);
+  assert.ok(resultado, "No se encontró el producto por código");
+  assert.equal(
+    resultado.code,
+    codeABuscar,
+    "El código del producto no coincide"
+  );
+});
 it("El dao edita un producto con su método editarProducto", async function () {
   const nuevoProducto = {
     title: "productoModificado",
@@ -93,6 +103,7 @@ it("El dao edita un producto con su método editarProducto", async function () {
   assert.equal(resultado.code, nuevoProducto.code);
   assert.equal(resultado.stock, nuevoProducto.stock);
 });
+
   it("El dao obtiene un producto por ID con su método obtenerProductoById", async function () {
     const resultado = await this.productosDao.obtenerProductoById(productoId);
 
