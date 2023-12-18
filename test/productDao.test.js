@@ -70,7 +70,29 @@ describe("Prueba al Dao de Productos del proyecto Ecommerce", function () {
     assert.equal(resultado.code, "TEST-1");
     productoId = resultado._id;
   });
+it("El dao edita un producto con su método editarProducto", async function () {
+  const nuevoProducto = {
+    title: "productoModificado",
+    description: "producto modificado en Test Mocha",
+    price: 20000,
+    thumbnail: "https://example.com/new-thumbnail.png",
+    code: "MOD-1",
+    stock: 20,
+  };
 
+  const resultado = await this.productosDao.editarProducto(
+    productoId,
+    nuevoProducto
+  );
+
+  assert.ok(resultado);
+  assert.equal(resultado.title, nuevoProducto.title);
+  assert.equal(resultado.description, nuevoProducto.description);
+  assert.equal(resultado.price, nuevoProducto.price);
+  assert.equal(resultado.thumbnail, nuevoProducto.thumbnail);
+  assert.equal(resultado.code, nuevoProducto.code);
+  assert.equal(resultado.stock, nuevoProducto.stock);
+});
   it("El dao obtiene un producto por ID con su método obtenerProductoById", async function () {
     const resultado = await this.productosDao.obtenerProductoById(productoId);
 
