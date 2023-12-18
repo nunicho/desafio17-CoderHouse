@@ -14,6 +14,12 @@ describe("Prueba al Dao de Productos del proyecto Ecommerce", function () {
     this.productosDao = ProductosMongoDao;
   });
 
+    after(async function () {
+      await mongoose.connection
+        .collection("productos")
+        .deleteMany({ code: "TEST-1" });
+    });
+
   it("El dao debe devolver un array de productos al ejecutar el método listarProductos", async function () {
     const query = {
       /* ... */
@@ -43,5 +49,24 @@ describe("Prueba al Dao de Productos del proyecto Ecommerce", function () {
     } catch (error) {
       console.error("Error:", error);
     }
+  });
+
+  it("El dao graba un producto con su método crearProducto", async function () {
+    let productoPrueba = {
+      title: "productoTest",
+      description: "producto creado en Test Mocha",
+      price: 15000,
+      thumbnail:
+        "https://economipedia.com/wp-content/uploads/test-de-estr%C3%A9s.png",
+      code: "TEST-1",
+      stock: 15,
+    };
+    let resultado = await this.productosDao.crearProducto(productoPrueba);
+
+    assert.ok(resultado._id);
+    assert.ok(resultado.title);
+    assert.equal(resultado.title, "productoTest");
+    assert.equal(resultado.description, "producto creado en Test Mocha");
+    assert.equal(resultado.code, "TEST-1");
   });
 });
