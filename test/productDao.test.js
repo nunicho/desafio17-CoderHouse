@@ -14,11 +14,11 @@ describe("Prueba al Dao de Productos del proyecto Ecommerce", function () {
     this.productosDao = ProductosMongoDao;
   });
 
-    after(async function () {
-      await mongoose.connection
-        .collection("productos")
-        .deleteMany({ code: "TEST-1" });
-    });
+  after(async function () {
+    await mongoose.connection
+      .collection("productos")
+      .deleteMany({ code: "TEST-1" });
+  });
 
   it("El dao debe devolver un array de productos al ejecutar el método listarProductos", async function () {
     const query = {
@@ -68,5 +68,33 @@ describe("Prueba al Dao de Productos del proyecto Ecommerce", function () {
     assert.equal(resultado.title, "productoTest");
     assert.equal(resultado.description, "producto creado en Test Mocha");
     assert.equal(resultado.code, "TEST-1");
+    productoId = resultado._id;
+  });
+
+  it("El dao obtiene un producto por ID con su método obtenerProductoById", async function () {
+    const resultado = await this.productosDao.obtenerProductoById(productoId);
+
+    assert.ok(resultado, "No se encontró el producto por ID");
+    assert.strictEqual(
+      resultado._id.toString(),
+      productoId.toString(),
+      "El ID del producto no coincide"
+    );
+  });
+
+  it("El dao borra un producto por ID con su método borrarProducto", async function () {
+    const resultado = await this.productosDao.borrarProducto(productoId);
+
+    assert.strictEqual(resultado.deletedCount, 1, "No se eliminó el producto");
+
+    // Verifica que el producto ya no exista
+    const productoEliminado = await this.productosDao.obtenerProductoById(
+      productoId
+    );
+    assert.strictEqual(
+      productoEliminado,
+      null,
+      "El producto no se eliminó correctamente"
+    );
   });
 });
