@@ -20,7 +20,7 @@ class ProductosMongoDao {
   }
 
   async crearProducto(producto) {
-      if (!producto.owner) {
+    if (!producto.owner) {
       producto.owner = "admin";
     }
     return await ProductosModelo.create(producto);

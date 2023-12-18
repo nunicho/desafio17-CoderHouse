@@ -1,4 +1,3 @@
-// usersDao.test.js
 const mongoose = require("mongoose");
 const config = require("../src/config/config.js");
 const Assert = require("assert");
@@ -15,13 +14,6 @@ describe("Prueba al Dao de Usuarios del proyecto Ecommerce", function () {
     this.usersDao = UsersMongoDao; 
   });
 
-  /*
-  beforeEach(async function(){
-    await mongoose.connection
-      .collection("users")
-      .deleteMany({ email: "juarez@test.com" });
-  })
-  */
   after(async function () {
     await mongoose.connection
       .collection("users")
@@ -35,7 +27,6 @@ describe("Prueba al Dao de Usuarios del proyecto Ecommerce", function () {
 
   it("El dao graba un usuario con su método createUser", async function (){
 
-    // first_name, last_name, email, age, password, role
         let usuarioPrueba = {
           first_name:"Lionel",
           last_name: "Messi" ,
@@ -55,36 +46,4 @@ describe("Prueba al Dao de Usuarios del proyecto Ecommerce", function () {
 
 });
 
-// npx mocha --exit
 
-/*
-
-const moongose = require("mongoose");
-const config =  require("../src/config/config.js")
-const Assert =require("assert");
-const UsersMongoDao = require("../src/dao/usersMongoDao.js");
-
-
-
-moongose.connect(config.MONGO_URL, { dbName: config.DB_NAME });
-
-const assert = Assert.strict
-
-describe("Prueba al Dao de Usuarios del proyecto Ecommerce", function(){
-    
-    this.timeout(5000)
-
-   
-    before(async function(){
-      this.usersDao = new UsersMongoDao();
-      console.log(this.usersDao.getUsers())
-    });
-
-
-    it("El dao debe devolver un array de usuarios al ejecutar el método getUsers", async function(){
-        let resultado = await this.usersDao.getUsers()
-        assert.strictEqual(Array.isArray(resultado), true)
-    })   
-})
-
-*/
