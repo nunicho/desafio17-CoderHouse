@@ -22,14 +22,10 @@ describe("Prueba al Dao de Productos del proyecto Ecommerce", function () {
   });
 
   it("El dao debe devolver un array de productos al ejecutar el método listarProductos", async function () {
-    const query = {
-      /* ... */
-    };
+    const query = {};
     const limit = 10;
     const pagina = 1;
-    const sortQuery = {
-      /* ... */
-    };
+    const sortQuery = {};
 
     try {
       let resultado = await this.productosDao.listarProductos(
@@ -132,3 +128,4 @@ it("El dao edita un producto con su método editarProducto", async function () {
     );
   });
 });
+
