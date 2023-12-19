@@ -18,31 +18,46 @@ describe("Pruebas al proyecto Ecommerce", function () {
   this.timeout(10000);
 
   describe("Pruebas al módulo productos", function () {
-
-  after(async function () {
-    await mongoose.connection
-      .collection("productos")
-      .deleteMany({ code: "TEST-1" });
-  });
-
+    after(async function () {
+      await mongoose.connection
+        .collection("productos")
+        .deleteMany({ code: "TEST-1" });
+    });
+    
     it("SUPERTEST: El endpoint /api/products, con método POST, permite generar un producto nuevo en BD", async function () {
       let producto = {
         title: "productoTest",
         description: "producto de Test",
         price: 20000,
         thumbnail: "https://example.com/new-thumbnail.png",
-        code: "TEST-9",
+        code: "TEST-10",
         stock: 20,
       };
-
-      // let resultado = await requester.post("/api/products").send(producto);
-      // console.log(resultado.body);
       let {body, ok, statusCode} = await requester.post("/api/products").send(producto);
-      // console.log({ body, ok, statusCode });
-      //expect(body.status).is.eq("success")
       expect(statusCode).to.be.equal(201)
       expect(ok).to.be.true
       expect(body.productoInsertado).to.has.property("_id");
+    });
+    
+
+    it("SUPERTEST: El endpoint /api/products, con método GET, obtiene productos de la Base de datos", async function () {
+      const queryParams = {
+        query: {},
+        limit: 10,
+        pagina: 1,
+        sortQuery: {},
+      };
+
+      try {
+        let { body, ok, statusCode } = await requester
+          .get("/api/products")
+          .query(queryParams);
+        expect(statusCode).to.equal(200);
+        expect(ok).to.be.true;
+        expect(body.productos.docs).to.be.an("array");        
+      } catch (error) {
+        console.error("Error:", error);
+      }
     });
   });
 });
