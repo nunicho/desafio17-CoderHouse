@@ -11,16 +11,18 @@ async function runTests() {
   await mongoose.connect(config.MONGO_URL, { dbName: config.DB_NAME });
 
   const expect = chai.expect;
-  const requester = supertest("http://localhost:3050");
+  const requester = supertest("http://localhost:8080");
 
   describe("Pruebas al proyecto Ecommerce", function () {
     this.timeout(6000);
 
     describe("Pruebas al módulo productos", function () {     
      
+      
     after(async function () {
         await mongoose.connection.collection("productos").deleteMany({title:"SUPERTEST"});
       });
+
 
       it("SUPERTEST: El endpoint /api/products, con método POST, permite generar un producto nuevo en BD", async function () {
         let producto = {
