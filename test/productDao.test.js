@@ -1,4 +1,3 @@
-
 const mongoose = require("mongoose");
 const config = require("../src/config/config.js");
 const Assert = require("assert");
@@ -16,11 +15,13 @@ describe("Prueba al Dao de Productos del proyecto Ecommerce", function () {
     this.productosDao = ProductosMongoDao;
   });
 
+  
   after(async function () {
     await mongoose.connection
       .collection("productos")
-      .deleteMany({ code: "TEST-1" });
+      .deleteMany({ code: "MOD-1" });
   });
+  
 
   it("El dao debe devolver un array de productos al ejecutar el método listarProductos", async function () {
     const query = {};
@@ -80,7 +81,7 @@ it("El dao busca un producto por código con su método buscarCode", async funct
 });
 it("El dao edita un producto con su método editarProducto", async function () {
   const nuevoProducto = {
-    title: "productoModificado",
+    title: "productoTESTModificado",
     description: "producto modificado en Test Mocha",
     price: 20000,
     thumbnail: "https://example.com/new-thumbnail.png",
@@ -112,7 +113,6 @@ it("El dao edita un producto con su método editarProducto", async function () {
       "El ID del producto no coincide"
     );
   });
-
   it("El dao borra un producto por ID con su método borrarProducto", async function () {
     const resultado = await this.productosDao.borrarProducto(productoId);
 
@@ -128,4 +128,5 @@ it("El dao edita un producto con su método editarProducto", async function () {
       "El producto no se eliminó correctamente"
     );
   });
+
 });
