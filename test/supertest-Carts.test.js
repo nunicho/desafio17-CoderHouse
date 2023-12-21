@@ -25,7 +25,6 @@ async function runTests() {
       ];
       
       const carrito = { products: productosEnCarrito };
-console.log(carrito);
       try {
         const { body, ok, statusCode } = await requester
           .post("/api/carts/purchase")
