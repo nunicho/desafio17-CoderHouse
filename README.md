@@ -92,5 +92,5 @@ http://localhost:8080/api-docs/   ------->(production)
 ## 18 TEST
 Los test, de momento, funcionan en modo production:
 
-http://localhost:8080/api-docs/   ------->(production)
+http://localhost:8080 ------->(production)
 npm run pro   ---> activa modo production
