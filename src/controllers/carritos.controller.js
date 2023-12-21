@@ -159,11 +159,16 @@ const crearCarrito = async (req, res) => {
     };
 
     let carritoInsertado = await carritosRepository.crearCarrito(carritoData);
-
+/*
     const ticketInsertado = await ticketController.createTicket(
       totalAmount,
       req.session.usuario.email
     );
+*/
+const ticketInsertado = await ticketController.createTicket(
+  totalAmount,
+  req.session.usuario ? req.session.usuario.email : "usuario_desconocido"
+);
 
     for (const product of carritoToAdd.products) {
       const id = product.id;
