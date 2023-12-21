@@ -5,7 +5,6 @@ const { describe, it } = require("mocha");
 const config = require("../src/config/config.js");
 
 
-
 async function runTests() {
   
   await mongoose.connect(config.MONGO_URL, { dbName: config.DB_NAME });

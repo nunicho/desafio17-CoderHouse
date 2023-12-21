@@ -38,7 +38,7 @@ describe("Prueba al Dao de Usuarios del proyecto Ecommerce - Utilizando Chai", f
           first_name:"Lionel",
           last_name: "Messi" ,
           email: "messi@test.com" ,
-          age: "25" ,
+          age: "36" ,
           password: "123" ,
           role: "user" ,   
         };
