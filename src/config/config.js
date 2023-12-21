@@ -32,11 +32,13 @@ const config = {
   CLIENT_SECRECT: process.env.CLIENT_SECRECT,
   CALLBACK_URL: process.env.CALLBACK_URL,
   SESSIONS_PASSWORD: process.env.SESSIONS_PASSWORD,
-  MODO:process.env.MODO,
-  SMTP_USER:process.env.SMTP_USER,
-  SMTP_PASSWORD:process.env.SMTP_PASSWORD,
-  SECRET:process.env.SECRET,
-  RESET_LINK:process.env.RESET_LINK,
+  MODO: process.env.MODO,
+  SMTP_USER: process.env.SMTP_USER,
+  SMTP_PASSWORD: process.env.SMTP_PASSWORD,
+  SECRET: process.env.SECRET,
+  RESET_LINK: process.env.RESET_LINK,
+  DIRECCION_TEST_LOCALHOST: process.env. DIRECCION_TEST_LOCALHOST,
+  PRODUCTO_TEST_EJEMPLO: process.env.PRODUCTO_TEST_EJEMPLO
 };
 
 const modo = config.MODO

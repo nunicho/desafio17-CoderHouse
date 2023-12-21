@@ -8,7 +8,8 @@ async function runTests() {
   await mongoose.connect(config.MONGO_URL, { dbName: config.DB_NAME });
 
   const expect = chai.expect;
-  const requester = supertest("http://localhost:8080");
+  console.log(config.DIRECCION_TEST_LOCALHOST);
+  const requester = supertest(config.DIRECCION_TEST_LOCALHOST);
 
   describe("SUPERTEST: Pruebas al proyecto Ecommerce", function () {
     this.timeout(6000);
@@ -18,13 +19,13 @@ async function runTests() {
       it("SUPERTEST: El endpoint /api/carts, con método POST, permite crear un carrito nuevo en BD. Además se genera también un ticket mediante ticket.controller", async function () {
       const productosEnCarrito = [
         {
-          id: "657b67cc67a48e340895515c",
+          id: config.PRODUCTO_TEST_EJEMPLO,
           quantity:2,
         },
       ];
-
+      
       const carrito = { products: productosEnCarrito };
-
+console.log(carrito);
       try {
         const { body, ok, statusCode } = await requester
           .post("/api/carts/purchase")
