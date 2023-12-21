@@ -14,15 +14,15 @@ Mauricio Javier ALONSO
 
 ## 3. TITULO DESAFIO ENTREGABLE: 
 
-Documentar API
+Módulos de testing para proyecto final. 
 
 ## 4. N° DESAFIO ENTREGABLE: 
 
-N° 16
+N° 17
 
 ## 5. CONSIGNA DESAFIO ENTREGABLE: 
 
-Realizar la configuración necesaria para tener documentado tu proyecto final a partir de Swagger. 
+Realizar módulos de testing para el proyecto principal, utilizando los módulos mocha+chai+supertest    
 
 
 ## 6. Usuario Administrador:
@@ -83,8 +83,14 @@ Para acceder a esta ruta está incorporado un link en el login
 ## 16 Cambio de rol
 Para acceder a esta ruta está incorporado un link en el home (para ello hay que ingresar como usuario)
 
-## Rutas para Swagger
+## 17 Rutas para Swagger
 Las rutas para Swagger son:
 http://localhost:3050/api-docs/   ------->(development)
 http://localhost:8080/api-docs/   ------->(production)
 
+
+## 18 TEST
+Los test, de momento, funcionan en modo production:
+
+http://localhost:8080/api-docs/   ------->(production)
+npm run pro   ---> activa modo production
