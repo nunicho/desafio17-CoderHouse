@@ -8,7 +8,7 @@ mongoose.connect(config.MONGO_URL, { dbName: config.DB_NAME });
 
 const assert = Assert.strict;
 
-describe("Prueba al Dao de Productos del proyecto Ecommerce", function () {
+describe("MOCHA: Prueba al Dao de Productos del proyecto Ecommerce", function () {
   this.timeout(5000);
 
   before(async function () {
@@ -23,7 +23,7 @@ describe("Prueba al Dao de Productos del proyecto Ecommerce", function () {
   });
   
 
-  it("El dao debe devolver un array de productos al ejecutar el método listarProductos", async function () {
+  it("MOCHA: El dao debe devolver un array de productos al ejecutar el método listarProductos", async function () {
     const query = {};
     const limit = 10;
     const pagina = 1;
@@ -50,7 +50,7 @@ describe("Prueba al Dao de Productos del proyecto Ecommerce", function () {
     }
   });
 
-  it("El dao graba un producto con su método crearProducto", async function () {
+  it("MOCHA: El dao graba un producto con su método crearProducto", async function () {
     let productoPrueba = {
       title: "productoTest",
       description: "producto creado en Test Mocha",
@@ -69,7 +69,7 @@ describe("Prueba al Dao de Productos del proyecto Ecommerce", function () {
     assert.equal(resultado.code, "TEST-1");
     productoId = resultado._id;
   });
-it("El dao busca un producto por código con su método buscarCode", async function () {
+it("MOCHA: El dao busca un producto por código con su método buscarCode", async function () {
   const codeABuscar = "TEST-1";
   const resultado = await this.productosDao.existeProducto(codeABuscar);
   assert.ok(resultado, "No se encontró el producto por código");
@@ -79,7 +79,7 @@ it("El dao busca un producto por código con su método buscarCode", async funct
     "El código del producto no coincide"
   );
 });
-it("El dao edita un producto con su método editarProducto", async function () {
+it("MOCHA: El dao edita un producto con su método editarProducto", async function () {
   const nuevoProducto = {
     title: "productoTESTModificado",
     description: "producto modificado en Test Mocha",
@@ -103,7 +103,7 @@ it("El dao edita un producto con su método editarProducto", async function () {
   assert.equal(resultado.stock, nuevoProducto.stock);
 });
 
-  it("El dao obtiene un producto por ID con su método obtenerProductoById", async function () {
+  it("MOCHA: El dao obtiene un producto por ID con su método obtenerProductoById", async function () {
     const resultado = await this.productosDao.obtenerProductoById(productoId);
 
     assert.ok(resultado, "No se encontró el producto por ID");
@@ -113,7 +113,7 @@ it("El dao edita un producto con su método editarProducto", async function () {
       "El ID del producto no coincide"
     );
   });
-  it("El dao borra un producto por ID con su método borrarProducto", async function () {
+  it("MOCHA: El dao borra un producto por ID con su método borrarProducto", async function () {
     const resultado = await this.productosDao.borrarProducto(productoId);
 
     assert.strictEqual(resultado.deletedCount, 1, "No se eliminó el producto");

@@ -12,10 +12,10 @@ async function runTests() {
   const expect = chai.expect;
   const requester = supertest("http://localhost:8080");
 
-  describe("Pruebas al proyecto Ecommerce", function () {
+  describe("Pruebas al proyecto Ecommerce - Productos", function () {
     this.timeout(6000);
 
-    describe("Pruebas al módulo productos", function () {     
+    describe("SUPERTEST: Pruebas al módulo productos", function () {     
      
       
     after(async function () {

@@ -20,7 +20,7 @@ async function runTests() {
         .deleteMany({ email: "messi@test.com" });
     });
 
-    it("Debe poder agregarse un usuario con la ruta /api/sessions/registro, metodo post", async () => {
+    it("SUPERTEST: Debe poder agregarse un usuario con la ruta /api/sessions/registro, metodo post", async () => {
       const usuarioPrueba = {
         first_name: "Lionel",
         last_name: "Messi",
@@ -37,7 +37,7 @@ async function runTests() {
       expect(usuarioPrueba).to.have.property("email");
     });
 
-    it("Debe poder hacerse un login siguiendo la ruta: /api/sessions/login", async () => {
+    it("SUPERTEST: Debe poder hacerse un login siguiendo la ruta: /api/sessions/login", async () => {
       const usuarioPrueba = {
         email: "messi@test.com",
         password: "123",

@@ -995,3 +995,9 @@
 {"level":"info","message":"Acceso exitoso a la ruta de ver carritos","timestamp":"2023-12-21T20:42:48.145Z"}
 {"level":"info","message":"Inicio de sesión exitoso - Usuario: messi@test.com","timestamp":"2023-12-21T20:42:51.124Z"}
 {"level":"info","message":"Acceso exitoso a la ruta de crear carrito","timestamp":"2023-12-21T21:47:20.400Z"}
+{"level":"info","message":"Acceso exitoso a la ruta de crear carrito","timestamp":"2023-12-21T22:05:55.678Z"}
+{"level":"info","message":"Acceso exitoso a la ruta de ver carritos","timestamp":"2023-12-21T22:05:57.090Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: messi@test.com","timestamp":"2023-12-21T22:06:00.108Z"}
+{"level":"info","message":"Acceso exitoso a la ruta de crear carrito","timestamp":"2023-12-21T22:12:13.678Z"}
+{"level":"info","message":"Acceso exitoso a la ruta de ver carritos","timestamp":"2023-12-21T22:12:15.086Z"}
+{"level":"info","message":"Inicio de sesión exitoso - Usuario: messi@test.com","timestamp":"2023-12-21T22:12:18.086Z"}

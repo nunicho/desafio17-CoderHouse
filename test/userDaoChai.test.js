@@ -12,7 +12,7 @@ mongoose.connect(config.MONGO_URL, { dbName: config.DB_NAME });
 
 const expect=chai.expect
 
-describe("Prueba al Dao de Usuarios del proyecto Ecommerce - Utilizando Chai", function () {
+describe("CHAI: Prueba al Dao de Usuarios del proyecto Ecommerce - Utilizando Chai", function () {
   this.timeout(5000);
 
   before(async function () {
@@ -25,14 +25,14 @@ describe("Prueba al Dao de Usuarios del proyecto Ecommerce - Utilizando Chai", f
       .deleteMany({ email: "messi@test.com" });
   });
 
-  it("El dao debe devolver un array de usuarios al ejecutar el método getUsers", async function () {
+  it("CHAI: El dao debe devolver un array de usuarios al ejecutar el método getUsers", async function () {
     let resultado = await this.usersDao.getUsers();
    // assert.strictEqual(Array.isArray(resultado), true);
    expect(Array.isArray(resultado)).to.be.equal(true);
    
   });
 
-  it("El dao graba un usuario con su método createUser", async function (){
+  it("CHAI: El dao graba un usuario con su método createUser", async function (){
 
         let usuarioPrueba = {
           first_name:"Lionel",
@@ -47,15 +47,7 @@ describe("Prueba al Dao de Usuarios del proyecto Ecommerce - Utilizando Chai", f
         expect(resultado).to.have.property("_id")
         expect(resultado).to.have.property("first_name").and.is.equal("Lionel")
         expect(resultado).to.have.property("last_name").and.is.equal("Messi");
-           
-        
-/*
-        assert.ok(resultado._id)
-        assert.ok(resultado.first_name);
-        assert.equal(resultado.first_name, "Lionel")
-        assert.equal(resultado.last_name, "Messi");
-*/        
-  });
+    });
 
 });
 

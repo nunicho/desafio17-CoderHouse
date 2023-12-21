@@ -10,10 +10,10 @@ const { generaHash, validaHash } = require("../src/util.js");
 
 const expect=chai.expect
 
-describe("Pruebas funciones hash", async ()=>{
+describe("CHAI: Pruebas funciones hash", async ()=>{
     //this.timeout(5000)
 
-    it("Si ejecuto generaHash enviando un password como argumento, genera un hash con algoritmo Bcrypt", async ()=>{
+    it("CHAI: Si ejecuto generaHash enviando un password como argumento, genera un hash con algoritmo Bcrypt", async ()=>{
         let password="codercoder"
         let resultado=await generaHash(password)
 
@@ -22,7 +22,7 @@ describe("Pruebas funciones hash", async ()=>{
         expect(resultado.substring(0,4)).to.be.equal("$2b$")
     })
 
-    it("La funcion validaHash recibe usuario y password, verifica coincidencia", async ()=>{
+    it("CHAI: La funcion validaHash recibe usuario y password, verifica coincidencia", async ()=>{
         let password ="123"
         let usuario = {
             password: generaHash(password)
@@ -40,4 +40,3 @@ describe("Pruebas funciones hash", async ()=>{
     })
 })
 
-//npx mocha ./test/hashChai.test.js
