@@ -11,7 +11,9 @@ program
       .choices(["development", "production"])
       .default("production")
   )
-  .parse();
+  //.parse();
+  .option("--exit", "Forzar salida después de las pruebas")
+  .parse(process.argv);
 
 let entorno = program.opts().mode;
 dotenv.config({
